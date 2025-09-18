@@ -19,8 +19,8 @@ public class EquipmentController {
     }
 
     @PostMapping
-    public Equipment saveEquipment(@RequestBody Equipment equipment) {
-        return equipServ.saveEquipment(equipment);
+    public Equipment postEquipment(@RequestBody Equipment equipment) {
+        return equipServ.postEquipment(equipment);
     }
 
     @GetMapping

@@ -1,6 +1,7 @@
 package edu.cit.go.felixchristian.campusequipmentloan.Service;
 
 import edu.cit.go.felixchristian.campusequipmentloan.Model.Equipment;
+import edu.cit.go.felixchristian.campusequipmentloan.Model.Student;
 import edu.cit.go.felixchristian.campusequipmentloan.Repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class EquipmentService {
         this.equipRepo = equipRepo;
     }
 
-    public Equipment saveEquipment(Equipment equipment) {
-        return equipRepo.save(equipment);
+    public Equipment postEquipment(Equipment equip) {
+        return equipRepo.save(equip);
     }
 
     public List<Equipment> getAllEquipment() {

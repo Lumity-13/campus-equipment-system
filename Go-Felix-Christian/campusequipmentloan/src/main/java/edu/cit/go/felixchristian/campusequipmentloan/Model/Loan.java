@@ -2,7 +2,7 @@ package edu.cit.go.felixchristian.campusequipmentloan.Model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "loan")
@@ -13,24 +13,31 @@ public class Loan {
     private Long loanId;
 
     @ManyToOne
+    @JoinColumn(name = "equipment_id")
+    private Equipment equipment;
+
+    @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
-    private Date startDate;
-    private Date dueDate;
-    private Date returnDate;
+    private LocalDate startDate;
+    private LocalDate dueDate;
+    private LocalDate returnDate;
     private String status;
+    private Double penaltyAmount = 0.0;
 
     public Loan() {
         super();
     }
 
-    public Loan(Long loanId, Student student, Date startDate, Date dueDate, Date returnDate, String status) {
+    public Loan(Long loanId, Equipment equipment, Student student, LocalDate startDate, LocalDate dueDate, LocalDate returnDate, String status, Double penaltyAmount) {
         this.loanId = loanId;
+        this.equipment = equipment;
         this.student = student;
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.returnDate = returnDate;
         this.status = status;
+        this.penaltyAmount = penaltyAmount;
     }
 
     public Long getLoanId() {
@@ -41,6 +48,14 @@ public class Loan {
         this.loanId = loanId;
     }
 
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
+
     public Student getStudent() {
         return student;
     }
@@ -49,27 +64,27 @@ public class Loan {
         this.student = student;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -79,5 +94,13 @@ public class Loan {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Double getPenaltyAmount() {
+        return penaltyAmount;
+    }
+
+    public void setPenaltyAmount(Double penaltyAmount) {
+        this.penaltyAmount = penaltyAmount;
     }
 }
