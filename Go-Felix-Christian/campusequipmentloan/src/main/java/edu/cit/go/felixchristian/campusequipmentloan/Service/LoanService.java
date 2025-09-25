@@ -43,7 +43,6 @@ public class LoanService {
         Equipment equipment = equipmentRepo.findById(equipmentId)
                 .orElseThrow(() -> new RuntimeException("Equipment not found"));
 
-        // ✅ Rule: Max 2 active loans per student
         List<Loan> activeLoans = loanRepo.findByStudentAndStatus(student, "ACTIVE");
         if (activeLoans.size() >= 2) {
             throw new RuntimeException("Student already has 2 active loans.");

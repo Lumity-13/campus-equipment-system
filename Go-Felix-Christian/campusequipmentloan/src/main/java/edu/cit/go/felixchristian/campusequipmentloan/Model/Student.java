@@ -12,17 +12,19 @@ public class Student {
     private String studentNo;
     private String name;
     private String email;
+    private String password;
 
     public Student() {
         super();
     }
 
-    public Student(Long studentId, String studentNo, String name, String email) {
+    public Student(Long studentId, String studentNo, String name, String email, String password) {
         super();
         this.studentId = studentId;
         this.studentNo = studentNo;
         this.name = name;
         this.email = email;
+        this.password = password;
     }
 
     public Long getStudentId() {
@@ -55,5 +57,13 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

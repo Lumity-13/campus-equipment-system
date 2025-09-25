@@ -36,7 +36,7 @@ public class LoanController {
         return loanServ.createLoan(studentId, equipmentId, startDateStr);
     }
 
-    @PostMapping("/{id}/return")
+    @PostMapping("/{loanId}/return")
     public Loan returnLoan(@PathVariable Long loanId, @RequestBody Map<String, String> body) {
         String returnDateStr = body.get("returnDate"); // e.g. "2025-09-15"
         return loanServ.returnLoan(loanId, returnDateStr);
